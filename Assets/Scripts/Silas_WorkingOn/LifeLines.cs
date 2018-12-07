@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour {
+public class LifeLines : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
