@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -338,7 +338,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 27927211}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 548217892}
+        m_MethodName: AskTheAudiance
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &27927211
@@ -592,7 +603,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: ATA
 --- !u!222 &484493222
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -676,8 +687,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 548217892}
-        m_MethodName: SetCurrentQuestion
+      - m_Target: {fileID: 548217894}
+        m_MethodName: ansOne
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -794,6 +805,8 @@ GameObject:
   m_Component:
   - component: {fileID: 548217893}
   - component: {fileID: 548217892}
+  - component: {fileID: 548217894}
+  - component: {fileID: 548217895}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -817,7 +830,7 @@ MonoBehaviour:
   startButtonTitle_Button: {fileID: 0}
   quitButtonTitle_Button: {fileID: 0}
   backgroundImageGame_UI: {fileID: 597552127}
-  totalTimer_Text: {fileID: 591420983}
+  totalMoney_Text: {fileID: 591420983}
   questionTimer_Text: {fileID: 388416171}
   question_Text: {fileID: 22730042}
   questionNumber_Text: {fileID: 1672181442}
@@ -829,6 +842,9 @@ MonoBehaviour:
   answerTwoGame_Button: {fileID: 960117127}
   answerThreeGame_Button: {fileID: 968414021}
   answerFourGame_Button: {fileID: 710080237}
+  fiftyFifty_Button: {fileID: 688106030}
+  askTheAudience_Button: {fileID: 27927208}
+  callAFriend_Button: {fileID: 1510280439}
   questions:
   - question: This is a test, Press Question 2
     isCorrectAnswer: 2
@@ -843,9 +859,6 @@ MonoBehaviour:
     questionValue: 1
   - answers: 'Question Three: Answer 1'
     questionValue: 1
-  currentAnswerOne:
-    answers: 
-    questionValue: 0
   answersTwo:
   - answers: 'Question one: Answer 2'
     questionValue: 2
@@ -853,9 +866,6 @@ MonoBehaviour:
     questionValue: 2
   - answers: 'Question Three: Answer 2'
     questionValue: 2
-  currentAnswerTwo:
-    answers: 
-    questionValue: 0
   answersThree:
   - answers: 'Question one: Answer 3'
     questionValue: 3
@@ -863,9 +873,6 @@ MonoBehaviour:
     questionValue: 3
   - answers: 'Question Three: Answer 3'
     questionValue: 3
-  currentAnswerThree:
-    answers: 
-    questionValue: 0
   answersFour:
   - answers: 'Question one: Answer 4'
     questionValue: 4
@@ -873,10 +880,27 @@ MonoBehaviour:
     questionValue: 4
   - answers: 'Question Three: Answer 4'
     questionValue: 4
+  moneyToEarn:
+  - worth: 100
+  - worth: 400
+  - worth: 500
+  currentAnswerOne:
+    answers: 
+    questionValue: 0
+  currentAnswerTwo:
+    answers: 
+    questionValue: 0
+  currentAnswerThree:
+    answers: 
+    questionValue: 0
   currentAnswerFour:
     answers: 
     questionValue: 0
-  pointsEarned: 0
+  currentEarnableMoney:
+    worth: 0
+  questionTimer: 0
+  moneyEarned: 0
+  moneyGained: 0
   questionBeingAnswered: 0
   currentQuestion:
     question: 
@@ -894,6 +918,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &548217894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 548217891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 576e565da7628f74f9cd5d18715710ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+--- !u!114 &548217895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 548217891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0ce512ec31a26c478754d6433a64d3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &591420981
 GameObject:
   m_ObjectHideFlags: 0
@@ -1114,7 +1161,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 688106033}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 548217892}
+        m_MethodName: FiftyFifty
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &688106033
@@ -1226,7 +1284,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 710080240}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 548217894}
+        m_MethodName: ansFour
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &710080240
@@ -1487,7 +1556,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 960117130}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 548217894}
+        m_MethodName: ansTwo
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &960117130
@@ -1599,7 +1679,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 968414024}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 548217894}
+        m_MethodName: ansThree
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &968414024
@@ -1958,7 +2049,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1510280442}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 548217892}
+        m_MethodName: CallAFriend
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1510280442
@@ -2062,7 +2164,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: 50/50
 --- !u!222 &1536386850
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2287,7 +2389,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: CAF
 --- !u!222 &1859557047
 CanvasRenderer:
   m_ObjectHideFlags: 0
