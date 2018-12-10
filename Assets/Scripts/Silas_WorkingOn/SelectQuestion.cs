@@ -11,11 +11,28 @@ public class SelectQuestion : MonoBehaviour
     private float maxCounter = .45f;
     private bool didGetWrong = false;
 
+    //Audios
+    public AudioSource answersSounds;
+    public AudioClip correctAnswer;
+    public AudioClip wrongAnswer;
+    public AudioSource loseSoundsManager;
+    public AudioClip winSound;
+    public AudioClip loseSound;
+
     void Start()
     {
         penalty = 100;
         gameManager = gameObject.GetComponent<GameManager>();
         counter = maxCounter;
+
+        //Audio Initializers
+        answersSounds = GetComponent<AudioSource>();
+
+        loseSoundsManager = GetComponent<AudioSource>();
+
+        correctAnswer = GetComponent<AudioClip>();
+
+        wrongAnswer = GetComponent<AudioClip>();
     }
 
     private void Update()
@@ -23,6 +40,8 @@ public class SelectQuestion : MonoBehaviour
         if (didGetWrong == true)
         {
             //plays sound if player answered incorectly
+            answersSounds.PlayOneShot(wrongAnswer);
+
 
             counter -= Time.deltaTime;
             if (counter <= 0)
@@ -40,6 +59,8 @@ public class SelectQuestion : MonoBehaviour
                     gameManager.answerTwoGame_Button.SetActive(false);
                     gameManager.answerThreeGame_Button.SetActive(false);
                     gameManager.answerFourGame_Button.SetActive(false);
+
+                    loseSoundsManager.PlayOneShot(loseSound);
                 }//If player somehow looses their money, they lose... Shocker!
             }
         }// If they pick wrong, they lose some money.
@@ -48,6 +69,7 @@ public class SelectQuestion : MonoBehaviour
     public void QuestionSelected()
     {
         //Plays sound when player answers correctly
+        answersSounds.PlayOneShot(correctAnswer);
 
         gameManager.SetCurrentQuestion();
     }
