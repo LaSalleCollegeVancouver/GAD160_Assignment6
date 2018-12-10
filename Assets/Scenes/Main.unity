@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -875,7 +875,6 @@ GameObject:
   - component: {fileID: 548217893}
   - component: {fileID: 548217892}
   - component: {fileID: 548217894}
-  - component: {fileID: 548217895}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1056,8 +1055,13 @@ MonoBehaviour:
     questionValue: 4
   - answers: Necessary Extraordinary Situation
     questionValue: 4
+<<<<<<< HEAD
+  - answers: Liquid Snake
+    questionValue: 4
+=======
   - answers: Solid Snake
     questionValue: 1
+>>>>>>> e7fd75e20213223002041176fff845d8b8bfbf49
   - answers: Princess Toad
     questionValue: 4
   - answers: Earth
@@ -1113,6 +1117,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 576e565da7628f74f9cd5d18715710ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+  gameManager: {fileID: 0}
+=======
   gameManager: {fileID: 548217892}
   answersSounds: {fileID: 1514495396}
   correctAnswer: {fileID: 8300000, guid: 1264bd6e30684734e8b9951e79df0f5c, type: 3}
@@ -1131,6 +1138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0ce512ec31a26c478754d6433a64d3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+>>>>>>> e7fd75e20213223002041176fff845d8b8bfbf49
 --- !u!1 &591420981
 GameObject:
   m_ObjectHideFlags: 0
