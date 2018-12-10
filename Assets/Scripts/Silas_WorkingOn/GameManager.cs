@@ -137,8 +137,6 @@ public class GameManager : MonoBehaviour
             unselectedAnswersTwo.RemoveAt(randomQuestionSelector);
             unselectedAnswersThree.RemoveAt(randomQuestionSelector);
             unselectedAnswersFour.RemoveAt(randomQuestionSelector);
-
-            print(unansweredQuestions[randomQuestionSelector] + "  |  " + randomQuestionSelector + "  |  " + questionBeingAnswered); // -------------DEBUG
         }
         else
         {
@@ -149,16 +147,20 @@ public class GameManager : MonoBehaviour
             fiftyFifty_Button.SetActive(false);
             askTheAudience_Button.SetActive(false);
             callAFriend_Button.SetActive(false);
+            totalMoney_Text.text = "Money: $" + moneyEarned;
             question_Text.text = "You Won!\n Your prize is $" + moneyEarned;
         }
-
         //Sets the value of the question to match the questions answered.
         int x = questionBeingAnswered - 1;//doing this made it work, Im not going to question it.
         moneyEarned += moneyGained;
         currentEarnableMoney = unearnedMoney[x];
         moneyGained = currentEarnableMoney.worth;
         totalMoney_Text.text = "Money: $" + moneyEarned;
-        ForceUpdateUIText();
+        if (unansweredQuestions.Count > 0)
+        {
+            ForceUpdateUIText();
+        }
+        
     }
     // Updates timer.
     public void Update()

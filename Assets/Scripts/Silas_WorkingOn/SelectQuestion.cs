@@ -70,7 +70,7 @@ public class SelectQuestion : MonoBehaviour
     {
         //Plays sound when player answers correctly
         answersSounds.PlayOneShot(correctAnswer);
-
+        print("Played sound");
         gameManager.SetCurrentQuestion();
     }
             
@@ -81,7 +81,7 @@ public class SelectQuestion : MonoBehaviour
     {
         if (gameManager.currentAnswerOne.questionValue == gameManager.currentQuestion.isCorrectAnswer)
         {
-            gameManager.SetCurrentQuestion();
+            QuestionSelected();
         }
         else
         {
@@ -97,7 +97,7 @@ public class SelectQuestion : MonoBehaviour
     {
         if (gameManager.currentAnswerTwo.questionValue == gameManager.currentQuestion.isCorrectAnswer)
         {
-            gameManager.SetCurrentQuestion();
+            QuestionSelected();
         }
         else
         {
@@ -113,7 +113,7 @@ public class SelectQuestion : MonoBehaviour
     {
         if (gameManager.currentAnswerThree.questionValue == gameManager.currentQuestion.isCorrectAnswer)
         {
-            gameManager.SetCurrentQuestion();
+            QuestionSelected();
         }
         else
         {
@@ -129,7 +129,7 @@ public class SelectQuestion : MonoBehaviour
     {
         if (gameManager.currentAnswerFour.questionValue == gameManager.currentQuestion.isCorrectAnswer)
         {
-            gameManager.SetCurrentQuestion();
+            QuestionSelected();
         }
         else
         {
