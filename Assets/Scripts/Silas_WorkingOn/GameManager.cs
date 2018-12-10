@@ -69,10 +69,11 @@ public class GameManager : MonoBehaviour
     public int questionBeingAnswered;
     public Question currentQuestion;
 
-
     // Use this for initialization
     void Start()
     {
+
+
         totalQuestions = questions.Count<Question>();
         //If question/answers is null or 0, sets them their correct value
         if (unansweredQuestions == null || unansweredQuestions.Count == 0)
@@ -100,6 +101,7 @@ public class GameManager : MonoBehaviour
             unearnedMoney = moneyToEarn.ToList<QuestionWorth>();
         }
         SetCurrentQuestion();
+        
     }
     /// <summary>
     /// Selects a question randomly and updates UI + answers
@@ -109,15 +111,13 @@ public class GameManager : MonoBehaviour
         if (unansweredQuestions.Count > 0)
         {
             int randomQuestionSelector = Random.Range(0, unansweredQuestions.Count); // Selects a question at random
-            currentQuestion = unansweredQuestions[randomQuestionSelector]; // Sets current question to randomly selected one
-            question_Text.text = currentQuestion.question;// Sets the question
-            questionBeingAnswered += 1;
 
-            // Removes question that was just asked.
-            unansweredQuestions.RemoveAt(randomQuestionSelector);
+            //Sets the current question the player is on.
+            questionBeingAnswered += 1;
             questionNumber_Text.text = ("Question: " + questionBeingAnswered + " / " + totalQuestions);
 
             //Sets the current question, answers, and reward Money to the randomly selected remaining questions and corrisponding values
+            currentQuestion = unansweredQuestions[randomQuestionSelector];
             currentAnswerOne = unselectedAnswersOne[randomQuestionSelector];
             currentAnswerTwo = unselectedAnswersTwo[randomQuestionSelector];
             currentAnswerThree = unselectedAnswersThree[randomQuestionSelector];
@@ -125,14 +125,31 @@ public class GameManager : MonoBehaviour
             currentEarnableMoney = unearnedMoney[0];
 
             //Updates Text UI to match the question
+            question_Text.text = currentQuestion.question;
             answerOne_Text.text = currentAnswerOne.answers;
             answerTwo_Text.text = currentAnswerTwo.answers;
             answerThree_Text.text = currentAnswerThree.answers;
             answerFour_Text.text = currentAnswerFour.answers;
+
+            // Removes question that was just asked, and the answers connected to it.
+            unansweredQuestions.RemoveAt(randomQuestionSelector);
+            unselectedAnswersOne.RemoveAt(randomQuestionSelector);
+            unselectedAnswersTwo.RemoveAt(randomQuestionSelector);
+            unselectedAnswersThree.RemoveAt(randomQuestionSelector);
+            unselectedAnswersFour.RemoveAt(randomQuestionSelector);
+
+            print(unansweredQuestions[randomQuestionSelector] + "  |  " + randomQuestionSelector + "  |  " + questionBeingAnswered); // -------------DEBUG
         }
         else
         {
-            question_Text.text = "You Won!\n Your prize is $" + moneyEarned; ;
+            answerOneGame_Button.SetActive(false);
+            answerTwoGame_Button.SetActive(false);
+            answerThreeGame_Button.SetActive(false);
+            answerFourGame_Button.SetActive(false);
+            fiftyFifty_Button.SetActive(false);
+            askTheAudience_Button.SetActive(false);
+            callAFriend_Button.SetActive(false);
+            question_Text.text = "You Won!\n Your prize is $" + moneyEarned;
         }
 
         //Sets the value of the question to match the questions answered.
@@ -141,6 +158,7 @@ public class GameManager : MonoBehaviour
         currentEarnableMoney = unearnedMoney[x];
         moneyGained = currentEarnableMoney.worth;
         totalMoney_Text.text = "Money: $" + moneyEarned;
+        ForceUpdateUIText();
     }
     // Updates timer.
     public void Update()
@@ -153,17 +171,17 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void ForceUpdateUIText()
     {
+        answerOneGame_Button.SetActive(true);
+        answerTwoGame_Button.SetActive(true);
+        answerThreeGame_Button.SetActive(true);
+        answerFourGame_Button.SetActive(true);
+
         question_Text.text = currentQuestion.question;
         answerOne_Text.text = currentAnswerOne.answers;
         answerTwo_Text.text = currentAnswerTwo.answers;
         answerThree_Text.text = currentAnswerThree.answers;
         answerFour_Text.text = currentAnswerFour.answers;
         totalMoney_Text.text = "Money: $" + moneyEarned;
-
-        answerOneGame_Button.SetActive(true);
-        answerTwoGame_Button.SetActive(true);
-        answerThreeGame_Button.SetActive(true);
-        answerFourGame_Button.SetActive(true);
     }
     /// <summary>
     /// Handles all funtions for the 50/50 LifeLine

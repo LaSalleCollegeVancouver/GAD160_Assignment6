@@ -6,12 +6,14 @@ using System.Linq;
 public class SelectQuestion : MonoBehaviour
 {
     public GameManager gameManager;
+    private int penalty;
     private float counter;
     private float maxCounter = .45f;
     private bool didGetWrong = false;
 
     void Start()
     {
+        penalty = 100;
         gameManager = gameObject.GetComponent<GameManager>();
         counter = maxCounter;
     }
@@ -20,15 +22,18 @@ public class SelectQuestion : MonoBehaviour
     {
         if (didGetWrong == true)
         {
+            //plays sound if player answered incorectly
+
             counter -= Time.deltaTime;
             if (counter <= 0)
             {
                 didGetWrong = false;
                 gameManager.ForceUpdateUIText();
                 counter = maxCounter;
-                gameManager.moneyEarned -= 100;
+                gameManager.moneyEarned -= penalty;
+                penalty *= 2;
 
-                if (gameManager.moneyEarned <= 0)
+                if (gameManager.moneyEarned < 0)
                 {
                     gameManager.question_Text.text = "Wow, You lost...";
                     gameManager.answerOneGame_Button.SetActive(false);
@@ -42,8 +47,11 @@ public class SelectQuestion : MonoBehaviour
 
     public void QuestionSelected()
     {
-        gameManager.SetCurrentQuestion();       
+        //Plays sound when player answers correctly
+
+        gameManager.SetCurrentQuestion();
     }
+            
     /// <summary>
     /// If button one is clicked
     /// </summary>
