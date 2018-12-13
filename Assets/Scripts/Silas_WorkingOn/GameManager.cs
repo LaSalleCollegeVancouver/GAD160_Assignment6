@@ -68,7 +68,11 @@ public class GameManager : MonoBehaviour
     private int totalQuestions;
     public int questionBeingAnswered;
     public Question currentQuestion;
-
+    private int askTheAudiance;
+    private int A;
+    private int B;
+    private int C;
+    private int D;
     //----------Sounds------------
     public AudioSource loseSoundsManager;
     public AudioClip winSound;
@@ -76,6 +80,7 @@ public class GameManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        askTheAudiance = 100;
         restartButton_Button.SetActive(false);
         quitButton_Button.SetActive(false);
 
@@ -335,10 +340,24 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void AskTheAudiance()
     {
-        int A = Random.Range(0, 100);
-        int B = Random.Range(0, 100);
-        int C = Random.Range(0, 100);
-        int D = Random.Range(0, 100);
+
+         A = Random.Range(0, askTheAudiance);
+        askTheAudiance -= A;
+        if (askTheAudiance >= 0)
+        {
+            B = Random.Range(0, askTheAudiance);
+            askTheAudiance -= B;
+        }
+        if (askTheAudiance >= 0)
+        {
+            C = Random.Range(0, askTheAudiance);
+            askTheAudiance -= C;
+        }
+        if (askTheAudiance >= 0)
+        {
+            D = Random.Range(0, askTheAudiance);
+            askTheAudiance -= D;
+        }
         //The audience are robots, what did you expect? 
         question_Text.text = "The audience says... A:" + A + ", B: " + B + ", C: " + C + ", D: " + D;
         askTheAudience_Button.SetActive(false);
