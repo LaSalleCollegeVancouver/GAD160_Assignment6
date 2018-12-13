@@ -68,6 +68,10 @@ public class GameManager : MonoBehaviour
     public int questionBeingAnswered;
     public Question currentQuestion;
 
+    //----------Sounds------------
+    public AudioSource loseSoundsManager;
+    public AudioClip winSound;
+
     // Use this for initialization
     void Start()
     {
@@ -141,6 +145,10 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            //Play win sound effect
+            loseSoundsManager.PlayOneShot(winSound);
+
+
             answerOneGame_Button.SetActive(false);
             answerTwoGame_Button.SetActive(false);
             answerThreeGame_Button.SetActive(false);
@@ -148,16 +156,20 @@ public class GameManager : MonoBehaviour
             fiftyFifty_Button.SetActive(false);
             askTheAudience_Button.SetActive(false);
             callAFriend_Button.SetActive(false);
+            totalMoney_Text.text = "Money: $" + moneyEarned;
             question_Text.text = "You Won!\n Your prize is $" + moneyEarned;
         }
-
-        //Sets the value of the question to match the questions answered.
-        int x = questionBeingAnswered - 1;//doing this made it work, Im not going to question it.
-        moneyEarned += moneyGained;
-        currentEarnableMoney = unearnedMoney[x];
-        moneyGained = currentEarnableMoney.worth;
-        totalMoney_Text.text = "Money: $" + moneyEarned;
-        ForceUpdateUIText();
+        
+        if (unansweredQuestions.Count > 0)
+        {
+            ForceUpdateUIText();
+            //Sets the value of the question to match the questions answered.
+            int x = questionBeingAnswered - 1;//doing this made it work, Im not going to question it.
+            moneyEarned += moneyGained;
+            currentEarnableMoney = unearnedMoney[x];
+            moneyGained = currentEarnableMoney.worth;
+            totalMoney_Text.text = "Money: $" + moneyEarned;
+        }
     }
     // Updates timer.
     public void Update()

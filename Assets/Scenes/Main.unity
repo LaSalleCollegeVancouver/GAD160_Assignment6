@@ -1164,6 +1164,8 @@ MonoBehaviour:
   currentQuestion:
     question: 
     isCorrectAnswer: 0
+  loseSoundsManager: {fileID: 695891293}
+  winSound: {fileID: 8300000, guid: 0852ba222650d04428a9ea09e170e0ab, type: 3}
 --- !u!4 &548217893
 Transform:
   m_ObjectHideFlags: 0

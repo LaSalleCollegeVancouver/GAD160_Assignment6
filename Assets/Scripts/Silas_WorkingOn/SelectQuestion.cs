@@ -41,11 +41,10 @@ public class SelectQuestion : MonoBehaviour
             if (counter <= 0)
             {
                 didGetWrong = false;
-                gameManager.ForceUpdateUIText();
                 counter = maxCounter;
                 gameManager.moneyEarned -= penalty;
                 penalty *= 2;
-
+                gameManager.ForceUpdateUIText();
                 if (gameManager.moneyEarned < 0)
                 {
                     gameManager.question_Text.text = "Wow, You lost...";
