@@ -1017,7 +1017,7 @@ MonoBehaviour:
     questionValue: 1
   - answers: Call of Duty
     questionValue: 1
-  - answers: Assassim's Creed Syndicate
+  - answers: Assassin's Creed Syndicate
     questionValue: 1
   - answers: Success
     questionValue: 1
@@ -1050,7 +1050,7 @@ MonoBehaviour:
     questionValue: 2
   - answers: Tofu
     questionValue: 2
-  - answers: Assassin;s Creed Series
+  - answers: Assassin's Creed Series
     questionValue: 2
   - answers: Pipes
     questionValue: 2
@@ -1157,7 +1157,8 @@ MonoBehaviour:
     questionValue: 0
   currentEarnableMoney:
     worth: 0
-  questionTimer: 0
+  secondsTimer: 0
+  minutesTimer: 0
   moneyEarned: 0
   moneyGained: 0
   questionBeingAnswered: 0
