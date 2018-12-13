@@ -9,11 +9,10 @@ public class GameManager : MonoBehaviour
     //------------ User Interface ------------
     //---------- Title Screen UI ----------
     //----- Images -----
-    public Image imageTitle_UI;
     public Image backgroundImageTitle_UI;
     //----- Buttons -----
-    public GameObject startButtonTitle_Button;
-    public GameObject quitButtonTitle_Button;
+    public GameObject quitButton_Button;
+    public GameObject restartButton_Button;
     //---------- In Game UI ----------
     //----- Images -----
     public Image backgroundImageGame_UI;
@@ -72,7 +71,8 @@ public class GameManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        restartButton_Button.SetActive(false);
+        quitButton_Button.SetActive(false);
 
         totalQuestions = questions.Count<Question>();
         //If question/answers is null or 0, sets them their correct value
@@ -138,7 +138,6 @@ public class GameManager : MonoBehaviour
             unselectedAnswersThree.RemoveAt(randomQuestionSelector);
             unselectedAnswersFour.RemoveAt(randomQuestionSelector);
 
-            print(unansweredQuestions[randomQuestionSelector] + "  |  " + randomQuestionSelector + "  |  " + questionBeingAnswered); // -------------DEBUG
         }
         else
         {

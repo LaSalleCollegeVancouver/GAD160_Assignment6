@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class SelectQuestion : MonoBehaviour
 {
@@ -25,7 +26,7 @@ public class SelectQuestion : MonoBehaviour
         gameManager = gameObject.GetComponent<GameManager>();
         counter = maxCounter;
 
-       
+
     }
 
     private void Update()
@@ -52,7 +53,8 @@ public class SelectQuestion : MonoBehaviour
                     gameManager.answerTwoGame_Button.SetActive(false);
                     gameManager.answerThreeGame_Button.SetActive(false);
                     gameManager.answerFourGame_Button.SetActive(false);
-
+                    gameManager.restartButton_Button.SetActive(true);
+                    gameManager.quitButton_Button.SetActive(true);
                     loseSoundsManager.PlayOneShot(loseSound);
                 }//If player somehow looses their money, they lose... Shocker!
             }
@@ -66,7 +68,7 @@ public class SelectQuestion : MonoBehaviour
 
         gameManager.SetCurrentQuestion();
     }
-            
+
     /// <summary>
     /// If button one is clicked
     /// </summary>
@@ -80,7 +82,6 @@ public class SelectQuestion : MonoBehaviour
         {
             didGetWrong = true;
             gameManager.question_Text.text = "Wrong";
-            //print("DEBUG: " + gameManager.currentAnswerOne.questionValue + " || " + gameManager.currentQuestion.isCorrectAnswer);
         }
     }
     /// <summary>
@@ -96,7 +97,6 @@ public class SelectQuestion : MonoBehaviour
         {
             didGetWrong = true;
             gameManager.question_Text.text = "Wrong";
-            //print("DEBUG: " + gameManager.currentAnswerTwo.questionValue + " || " + gameManager.currentQuestion.isCorrectAnswer);
         }
     }
     /// <summary>
@@ -112,7 +112,6 @@ public class SelectQuestion : MonoBehaviour
         {
             didGetWrong = true;
             gameManager.question_Text.text = "Wrong";
-            //print("DEBUG: " + gameManager.currentAnswerThree.questionValue + " || " + gameManager.currentQuestion.isCorrectAnswer);
         }
     }
     /// <summary>
@@ -128,7 +127,15 @@ public class SelectQuestion : MonoBehaviour
         {
             didGetWrong = true;
             gameManager.question_Text.text = "Wrong";
-            //print("DEBUG: " + gameManager.currentAnswerFour.questionValue + " || " + gameManager.currentQuestion.isCorrectAnswer);
         }
     }
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("Main");
+    }
+
 }
