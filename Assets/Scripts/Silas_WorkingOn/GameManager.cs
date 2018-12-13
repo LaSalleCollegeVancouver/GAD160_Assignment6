@@ -59,7 +59,8 @@ public class GameManager : MonoBehaviour
 
     //------------ Variables ------------
     //----- Timers -----
-    public float questionTimer;
+    public float secondsTimer;
+    public float minutesTimer;
     //----- Points -----
     public int moneyEarned;
     public int moneyGained;
@@ -174,8 +175,13 @@ public class GameManager : MonoBehaviour
     // Updates timer.
     public void Update()
     {
-        questionTimer += Time.deltaTime;
-        questionTimer_Text.text = questionTimer.ToString("00:00");
+        secondsTimer += Time.deltaTime;
+        questionTimer_Text.text = minutesTimer.ToString("00") + ":" + secondsTimer.ToString("00");
+        if (secondsTimer >= 60)
+        {
+            secondsTimer = 0;
+            minutesTimer += 1;
+        }
     }
     /// <summary>
     /// Force updates text UI and buttons
