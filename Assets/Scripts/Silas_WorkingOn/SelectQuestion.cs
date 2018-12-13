@@ -25,14 +25,7 @@ public class SelectQuestion : MonoBehaviour
         gameManager = gameObject.GetComponent<GameManager>();
         counter = maxCounter;
 
-        //Audio Initializers
-        answersSounds = GetComponent<AudioSource>();
-
-        loseSoundsManager = GetComponent<AudioSource>();
-
-        correctAnswer = GetComponent<AudioClip>();
-
-        wrongAnswer = GetComponent<AudioClip>();
+       
     }
 
     private void Update()
@@ -81,7 +74,7 @@ public class SelectQuestion : MonoBehaviour
     {
         if (gameManager.currentAnswerOne.questionValue == gameManager.currentQuestion.isCorrectAnswer)
         {
-            gameManager.SetCurrentQuestion();
+            QuestionSelected();
         }
         else
         {
@@ -97,7 +90,7 @@ public class SelectQuestion : MonoBehaviour
     {
         if (gameManager.currentAnswerTwo.questionValue == gameManager.currentQuestion.isCorrectAnswer)
         {
-            gameManager.SetCurrentQuestion();
+            QuestionSelected();
         }
         else
         {
@@ -113,7 +106,7 @@ public class SelectQuestion : MonoBehaviour
     {
         if (gameManager.currentAnswerThree.questionValue == gameManager.currentQuestion.isCorrectAnswer)
         {
-            gameManager.SetCurrentQuestion();
+            QuestionSelected();
         }
         else
         {
@@ -129,7 +122,7 @@ public class SelectQuestion : MonoBehaviour
     {
         if (gameManager.currentAnswerFour.questionValue == gameManager.currentQuestion.isCorrectAnswer)
         {
-            gameManager.SetCurrentQuestion();
+            QuestionSelected();
         }
         else
         {
